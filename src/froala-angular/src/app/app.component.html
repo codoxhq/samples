@@ -1,1 +1,24 @@
-<div [froalaEditor]>Hello, Froala!</div>
+<div class="header">
+  <a href="https://www.codox.io" target="_blank">
+    <img id="logo" src="https://www.codox.io/assets/img/wave.svg" alt="">
+  </a>
+  <div>
+    Create your own Google Docs with Wave + Froala
+  </div>
+</div>
+
+<div class="editors">
+  <app-realtime-froala
+    class="editor"
+    apiKey="58e429b0-be4a-4cd8-8c8d-9a37fb0adec0"
+    [docId]="docId"
+    username="Chris"
+  ></app-realtime-froala>
+
+  <app-realtime-froala
+    class="editor"
+    apiKey="58e429b0-be4a-4cd8-8c8d-9a37fb0adec0"
+    [docId]="docId"
+    username="James"
+  ></app-realtime-froala>
+</div>
