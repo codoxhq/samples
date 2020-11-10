@@ -3,22 +3,24 @@
     <img id="logo" src="https://www.codox.io/assets/img/wave.svg" alt="">
   </a>
   <div>
-    Create your own Google Docs with Wave + Froala
+    Create your own Google Docs with Wave + Froala on Angular
   </div>
 </div>
 
+<ul class="document-list">
+  <li *ngFor="let doc of docs" (click)="onDocClick(doc)">
+    <a>{{ doc.id }}</a>
+  </li>
+</ul>
+
 <div class="editors">
   <app-realtime-froala
+    *ngIf="currentDoc.id"
     class="editor"
-    apiKey="58e429b0-be4a-4cd8-8c8d-9a37fb0adec0"
-    [docId]="docId"
-    username="Chris"
-  ></app-realtime-froala>
-
-  <app-realtime-froala
-    class="editor"
-    apiKey="58e429b0-be4a-4cd8-8c8d-9a37fb0adec0"
-    [docId]="docId"
-    username="James"
+    [apiKey]="apiKey"
+    [username]="username"
+    [docId]="currentDoc.id"
+    [codox]="codox"
+    [model]="currentDoc.content"
   ></app-realtime-froala>
 </div>
