@@ -16,7 +16,7 @@ export default {
   },
   watch: {
     docId: function (newVal, oldVal) {
-      // einitialize codox if doc is changed
+      // reinitialize codox if doc is changed
       if (newVal !== oldVal) {
         this.startCollaboration();
       }
