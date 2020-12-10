@@ -1,12 +1,16 @@
 <template>
   <div>
-    <froala :tag="'textarea'" :config="config" v-model="editorContent"></froala>
+    <tinymce
+      id="editorId"
+      v-model="editorContent"
+      @editorInit="quillInitialized($event)"
+    ></tinymce>
   </div>
 </template>
 
 <script>
 export default {
-  name: "RealtimeFroala",
+  name: "RealtimeTinymce",
   props: {
     apiKey: String,
     docId: String,
@@ -16,7 +20,7 @@ export default {
   },
   watch: {
     docId: function (newVal, oldVal) {
-      // einitialize codox if doc is changed
+      // reinitialize codox if doc is changed
       if (newVal !== oldVal) {
         this.startCollaboration();
       }
@@ -30,16 +34,9 @@ export default {
   data() {
     const self = this;
     return {
-      config: {
-        events: {
-          initialized: function () {
-            // handle Froala initialization
-            self.froalaInitialized(this);
-          },
-        },
-      },
       editor: null,
-      editorContent: this.model,
+      editorContent: self.model,
+      editorId: self.docId,
     };
   },
   beforeDestroy() {
@@ -52,7 +49,7 @@ export default {
       // initialization of codox and passing editor object
       setTimeout(() => {
         this.codox.init({
-          app: "froala",
+          app: "tinymce",
           username: this.username,
           docId: this.docId,
           apiKey: this.apiKey,
@@ -60,7 +57,7 @@ export default {
         });
       }, 100);
     },
-    froalaInitialized(editor) {
+    quillInitialized(editor) {
       this.editor = editor;
       this.startCollaboration();
     },

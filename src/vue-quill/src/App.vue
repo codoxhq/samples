@@ -4,7 +4,7 @@
       <a href="https://www.codox.io" target="_blank">
         <img id="logo" src="https://www.codox.io/assets/img/wave.svg" alt="" />
       </a>
-      <div>Create your own Google Docs with Wave + Froala on Vue</div>
+      <div>Create your own Google Docs with Wave + Quill on Vue</div>
     </div>
 
     <div class="main-container">
@@ -22,7 +22,7 @@
       </div>
 
       <div class="editors">
-        <RealtimeFroala
+        <RealtimeQuill
           v-if="currentDoc.id"
           class="editor"
           :apiKey="apiKey"
@@ -30,24 +30,24 @@
           :docId="currentDoc.id"
           :codox="codox"
           :model="currentDoc.content"
-        ></RealtimeFroala>
+        ></RealtimeQuill>
       </div>
     </div>
   </div>
 </template>
 
 <script
-  src="https://smd.stage.codox.io/plugins/wave.client.js?apiKey=58e429b0-be4a-4cd8-8c8d-9a37fb0adec0&app=froala"
+  src="https://smd.stage.codox.io/plugins/wave.client.js?apiKey=58e429b0-be4a-4cd8-8c8d-9a37fb0adec0&app=quilljs"
   type="text/javascript"
 ></script>
 
 <script>
-import RealtimeFroala from "./components/RealtimeFroala.vue";
+import RealtimeQuill from "./components/RealtimeQuill.vue";
 
 export default {
   name: "App",
   components: {
-    RealtimeFroala,
+    RealtimeQuill,
   },
   data() {
     return {
@@ -214,11 +214,11 @@ body {
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 50px;
-  width: 55%;
 }
 
 .editor {
   flex: 1 1 auto;
+  max-width: 80%;
   height: 700px;
   margin-right: 10px;
 }

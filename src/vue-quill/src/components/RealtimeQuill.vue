@@ -1,12 +1,18 @@
 <template>
   <div>
-    <froala :tag="'textarea'" :config="config" v-model="editorContent"></froala>
+    <quill-editor
+      ref="myQuillEditor"
+      v-model="editorContent"
+      style="min-height: 300px"
+      @change="onEditorChange($event)"
+      @ready="quillInitialized($event)"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  name: "RealtimeFroala",
+  name: "RealtimeQuill",
   props: {
     apiKey: String,
     docId: String,
@@ -16,7 +22,7 @@ export default {
   },
   watch: {
     docId: function (newVal, oldVal) {
-      // einitialize codox if doc is changed
+      // reinitialize codox if doc is changed
       if (newVal !== oldVal) {
         this.startCollaboration();
       }
@@ -30,16 +36,8 @@ export default {
   data() {
     const self = this;
     return {
-      config: {
-        events: {
-          initialized: function () {
-            // handle Froala initialization
-            self.froalaInitialized(this);
-          },
-        },
-      },
       editor: null,
-      editorContent: this.model,
+      editorContent: self.model,
     };
   },
   beforeDestroy() {
@@ -52,7 +50,7 @@ export default {
       // initialization of codox and passing editor object
       setTimeout(() => {
         this.codox.init({
-          app: "froala",
+          app: "quilljs",
           username: this.username,
           docId: this.docId,
           apiKey: this.apiKey,
@@ -60,7 +58,10 @@ export default {
         });
       }, 100);
     },
-    froalaInitialized(editor) {
+    onEditorChange(event) {
+      console.log(event);
+    },
+    quillInitialized(editor) {
       this.editor = editor;
       this.startCollaboration();
     },
