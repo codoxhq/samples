@@ -30,6 +30,7 @@
           :docId="currentDoc.id"
           :codox="codox"
           :model="currentDoc.content"
+          :updateContent="updateContent"
         ></RealtimeQuill>
       </div>
     </div>
@@ -80,15 +81,21 @@ export default {
     },
     onDocClick({ id, content }) {
       if (id !== this.currentDoc.id) {
+        //leave the session
         if (this.codox) {
           this.codox.stop();
         }
+        //create a new codox instance
         this.codox = new Codox();
         this.currentDoc = {
           id,
           content,
         };
       }
+    },
+    updateContent(docId, content) {
+      const index = this.docs.findIndex((v) => v.id === docId);
+      this.$set(this.docs, index, { id: docId, content });
     },
   },
 };

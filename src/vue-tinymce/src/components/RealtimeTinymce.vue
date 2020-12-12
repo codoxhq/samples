@@ -3,7 +3,7 @@
     <tinymce
       id="editorId"
       v-model="editorContent"
-      @editorInit="quillInitialized($event)"
+      @editorInit="tinymceInitialized($event)"
     ></tinymce>
   </div>
 </template>
@@ -17,6 +17,7 @@ export default {
     username: String,
     codox: null,
     model: null,
+    updateContent: Function,
   },
   watch: {
     docId: function (newVal, oldVal) {
@@ -47,17 +48,22 @@ export default {
   methods: {
     startCollaboration() {
       // initialization of codox and passing editor object
-      setTimeout(() => {
-        this.codox.init({
-          app: "tinymce",
-          username: this.username,
-          docId: this.docId,
-          apiKey: this.apiKey,
-          editor: this.editor,
-        });
-      }, 100);
+      this.codox.init({
+        app: "tinymce",
+        username: this.username,
+        docId: this.docId,
+        apiKey: this.apiKey,
+        editor: this.editor,
+        hooks: {
+          // invoked whenever the document has been updated
+          contentChanged: () => {
+            const content = this.editor.getContent();
+            this.updateContent(this.docId, content);
+          },
+        },
+      });
     },
-    quillInitialized(editor) {
+    tinymceInitialized(editor) {
       this.editor = editor;
       this.startCollaboration();
     },

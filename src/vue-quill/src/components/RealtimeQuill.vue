@@ -4,7 +4,6 @@
       ref="myQuillEditor"
       v-model="editorContent"
       style="min-height: 300px"
-      @change="onEditorChange($event)"
       @ready="quillInitialized($event)"
     />
   </div>
@@ -19,6 +18,7 @@ export default {
     username: String,
     codox: null,
     model: null,
+    updateContent: Function,
   },
   watch: {
     docId: function (newVal, oldVal) {
@@ -48,18 +48,20 @@ export default {
   methods: {
     startCollaboration() {
       // initialization of codox and passing editor object
-      setTimeout(() => {
-        this.codox.init({
-          app: "quilljs",
-          username: this.username,
-          docId: this.docId,
-          apiKey: this.apiKey,
-          editor: this.editor,
-        });
-      }, 100);
-    },
-    onEditorChange(event) {
-      console.log(event);
+      this.codox.init({
+        app: "quilljs",
+        username: this.username,
+        docId: this.docId,
+        apiKey: this.apiKey,
+        editor: this.editor,
+        hooks: {
+          // invoked whenever the document has been updated
+          contentChanged: () => {
+            const content = this.editor.root.innerHTML;
+            this.updateContent(this.docId, content);
+          },
+        },
+      });
     },
     quillInitialized(editor) {
       this.editor = editor;

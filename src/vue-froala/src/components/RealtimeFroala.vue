@@ -13,6 +13,7 @@ export default {
     username: String,
     codox: null,
     model: null,
+    updateContent: Function,
   },
   watch: {
     docId: function (newVal, oldVal) {
@@ -33,7 +34,7 @@ export default {
       config: {
         events: {
           initialized: function () {
-            // handle Froala initialization
+            // handle froala initialization
             self.froalaInitialized(this);
           },
         },
@@ -44,6 +45,7 @@ export default {
   },
   beforeDestroy() {
     if (this.codox) {
+      //leave the session
       this.codox.stop();
     }
   },
@@ -57,6 +59,13 @@ export default {
           docId: this.docId,
           apiKey: this.apiKey,
           editor: this.editor,
+          hooks: {
+            // invoked whenever the document has been updated
+            contentChanged: () => {
+              const content = this.editor.html.get();
+              this.updateContent(this.docId, content);
+            },
+          },
         });
       }, 100);
     },
