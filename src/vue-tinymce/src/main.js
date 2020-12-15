@@ -4,7 +4,6 @@ import tinymce from 'vue-tinymce-editor'
 
 Vue.component('tinymce', tinymce)
 
-
 Vue.config.productionTip = false
 
 new Vue({
