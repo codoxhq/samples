@@ -4,7 +4,7 @@ This repository contains a collection of working examples on how to use codox AP
 
 The examples cover various Javascript frameworks and bindings for different editors
 
-An API key is required to run these demo. Get one [here](app.codox.io)
+An API key is required to run these demo. Get one [here](https://app.codox.io)
 
 ## Quill
 * [Vue](https://github.com/codoxhq/samples/tree/master/src/vue-quill)
