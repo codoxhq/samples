@@ -21,10 +21,7 @@ export class AppComponent {
 
   constructor() {
     this.docId = this.guid();
-    this.currentDoc = {
-      id: null,
-      content: null,
-    };
+    this.currentDoc = this.docs[0]
   }
 
   guid() {
@@ -38,7 +35,7 @@ export class AppComponent {
     );
   }
 
-  onDocClick({id, content}) {
+  onDocClick({ id, content }) {
     if (id !== this.currentDoc.id) {
       if (this.codox) {
         this.codox.stop();
