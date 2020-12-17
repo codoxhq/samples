@@ -1,6 +1,6 @@
 <template>
   <div>
-    <froala :tag="'textarea'" :config="config" v-model="editorContent"></froala>
+    <froala :config="config" :key="docId" v-model="editorContent"></froala>
   </div>
 </template>
 
@@ -32,6 +32,7 @@ export default {
     const self = this;
     return {
       config: {
+        height: 500,
         events: {
           initialized: function () {
             // handle froala initialization
@@ -52,22 +53,20 @@ export default {
   methods: {
     startCollaboration() {
       // initialization of codox and passing editor object
-      setTimeout(() => {
-        this.codox.init({
-          app: "froala",
-          username: this.username,
-          docId: this.docId,
-          apiKey: this.apiKey,
-          editor: this.editor,
-          hooks: {
-            // invoked whenever the document has been updated
-            contentChanged: () => {
-              const content = this.editor.html.get();
-              this.updateContent(this.docId, content);
-            },
+      this.codox.init({
+        app: "froala",
+        username: this.username,
+        docId: this.docId,
+        apiKey: this.apiKey,
+        editor: this.editor,
+        hooks: {
+          // invoked whenever the document has been updated
+          contentChanged: () => {
+            const content = this.editor.html.get();
+            this.updateContent(this.docId, content);
           },
-        });
-      }, 100);
+        },
+      });
     },
     froalaInitialized(editor) {
       this.editor = editor;

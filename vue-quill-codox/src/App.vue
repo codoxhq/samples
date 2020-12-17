@@ -18,7 +18,7 @@
             :key="doc.id"
             @click="onDocClick(doc)"
           >
-            <a class="document-link">{{ doc.id }}</a>
+            <a class="document-link">{{ doc.name }}</a>
           </li>
         </ul>
       </div>
@@ -54,10 +54,17 @@ export default {
   },
   data() {
     return {
-      docId: "",
       docs: [
-        { id: "doc1", content: "Hello World" },
-        { id: "doc2", content: "One two three" },
+        {
+          id: "557be51c-ea77-4d2f-a827-119f8b55ab33",
+          name: "doc1",
+          content: "Hello World",
+        },
+        {
+          id: "6283eeb9-180d-4d9b-8d2f-1bbb95e91dee",
+          name: "doc2",
+          content: "One two three",
+        },
       ],
       apiKey: "58e429b0-be4a-4cd8-8c8d-9a37fb0adec0",
       username: "Chris",
@@ -66,18 +73,11 @@ export default {
     };
   },
   mounted() {
-    this.docId = this.guid();
     this.currentDoc = this.docs[0];
+    //create a codox instance
+    this.codox = new Codox();
   },
   methods: {
-    guid() {
-      const s4 = () => {
-        return Math.floor((1 + Math.random()) * 0x10000)
-          .toString(16)
-          .substring(1);
-      };
-      return s4() + s4() + s4() + s4() + s4() + s4() + s4() + s4();
-    },
     onDocClick({ id, content }) {
       if (id !== this.currentDoc.id) {
         //leave the session
@@ -94,7 +94,7 @@ export default {
     },
     updateContent(docId, content) {
       const index = this.docs.findIndex((v) => v.id === docId);
-      this.$set(this.docs, index, { id: docId, content });
+      this.$set(this.docs, index, { ...this.docs[index], content });
     },
   },
 };
@@ -235,5 +235,12 @@ body {
   max-width: 80%;
   height: 700px;
   margin-right: 10px;
+}
+
+.ql-container {
+  min-height: 500px !important;
+}
+.ql-editor {
+  min-height: 500px !important;
 }
 </style>

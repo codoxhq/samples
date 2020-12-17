@@ -8,10 +8,10 @@ function App() {
 
   const apiKey = '58e429b0-be4a-4cd8-8c8d-9a37fb0adec0';
   const username = 'Chris';
-  const docs = [
+  const [docs, updateDocs] = useState([
     { "id": "1d52d64b-f7c5-40de-8137-629376ffbc76", name: "doc1", "content": "Hello World" },
     { "id": "'1d52d64b-f7c5-40de-8137-629376ffbc77", name: "doc2", "content": "One two three" }
-  ];
+  ])
   const [activeDoc, setActiveDoc] = useState(docs[0])
   const [codox, setCodoxInstance] = useState(null)
 
@@ -36,8 +36,13 @@ function App() {
   }
 
   const updateContent = (docId, content) => {
-    const index = docs.findIndex((v) => v.id === docId);
-    docs[index] = { id: docId, content }
+    const updatedDoc = docs.map(doc => {
+      if(doc.id === docId){
+        return ({...doc, content})
+      }
+      return doc
+    })
+    updateDocs(updatedDoc)
   }
 
 

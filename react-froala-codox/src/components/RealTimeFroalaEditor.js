@@ -25,8 +25,8 @@ const RealTimeFroalaEditor = ({ codox, docId, username, apiKey, model, updateCon
             app: 'froala',
             username: username,
             docId: docId,
-            apiKey:apiKey,
-            editor   : editor,
+            apiKey: apiKey,
+            editor: editor,
             hooks: {
                 // invoked whenever the document has been updated
                 contentChanged: () => {
@@ -38,6 +38,7 @@ const RealTimeFroalaEditor = ({ codox, docId, username, apiKey, model, updateCon
       }
 
     const config={
+        height: 500,
         events : {
           'initialized':  function() {
             setEditor(this) 
@@ -51,7 +52,6 @@ const RealTimeFroalaEditor = ({ codox, docId, username, apiKey, model, updateCon
                 tag='textarea'
                 config={config}
                 model={model}
-            // onModelChange={this.handleModelChange}
             />
         </>
 

@@ -8,10 +8,9 @@ const RealTimeTinymceEditor = ({ codox, docId, username, apiKey, model, updateCo
     const [editor, setEditor] = useState(null)
 
     useEffect(() => {
-
         // initialization of codox and passing editor object
         if (editor) {
-            editor && codox && codox.init({
+            codox && codox.init({
                 app: 'tinymce',
                 username: username,
                 docId: docId,
@@ -35,8 +34,9 @@ const RealTimeTinymceEditor = ({ codox, docId, username, apiKey, model, updateCo
         <>
             <Editor
                 id={docId}
+                key={docId}
                 ref={tinymceRef}
-                init={{ height: 280, width: 800 }}
+                init={{ height: 500, width: 800 }}
                 initialValue={model}
                 onInit={(e) => setEditor(e.target)}
             />
