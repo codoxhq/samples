@@ -1,7 +1,7 @@
 <template>
   <div>
     <tinymce
-      id="editorId"
+      :id="docId"
       v-model="editorContent"
       @editorInit="tinymceInitialized($event)"
     ></tinymce>
@@ -21,9 +21,11 @@ export default {
   },
   watch: {
     docId: function (newVal, oldVal) {
+      this.editor.setContent(this.model);
       // reinitialize codox if doc is changed
       if (newVal !== oldVal) {
         this.startCollaboration();
+        this.editorId = newVal;
       }
     },
     model: function (newVal, oldVal) {

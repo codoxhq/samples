@@ -132,3 +132,7 @@ li {
   height: 700px;
   margin-right: 10px;
 }
+
+#fr-logo>svg {
+  margin: 7px 15px;
+}

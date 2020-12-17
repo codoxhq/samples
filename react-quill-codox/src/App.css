@@ -131,3 +131,11 @@ li {
   height: 700px;
   margin-right: 10px;
 }
+
+.ql-container  {
+  min-height: 500px !important;
+}
+
+.ql-editor{
+  min-height: 500px !important;
+}

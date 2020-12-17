@@ -18,7 +18,7 @@
             :key="doc.id"
             @click="onDocClick(doc)"
           >
-            <a class="document-link">{{ doc.id }}</a>
+            <a class="document-link">{{ doc.name }}</a>
           </li>
         </ul>
       </div>
@@ -53,10 +53,17 @@ export default {
   },
   data() {
     return {
-      docId: "",
       docs: [
-        { id: "doc1", content: "Hello World" },
-        { id: "doc2", content: "One two three" },
+        {
+          id: "5e00436f-693c-45af-a642-c65380e24ee1",
+          name: "doc1",
+          content: "Hello World",
+        },
+        {
+          id: "21116ff0-ed2d-4a9a-b3e0-a22dd4326b40",
+          name: "doc2",
+          content: "One two three",
+        },
       ],
       apiKey: "58e429b0-be4a-4cd8-8c8d-9a37fb0adec0",
       username: "Chris",
@@ -65,18 +72,11 @@ export default {
     };
   },
   mounted() {
-    this.docId = this.guid();
+    //create a codox instance
+    this.codox = new Codox();
     this.currentDoc = this.docs[0];
   },
   methods: {
-    guid() {
-      const s4 = () => {
-        return Math.floor((1 + Math.random()) * 0x10000)
-          .toString(16)
-          .substring(1);
-      };
-      return s4() + s4() + s4() + s4() + s4() + s4() + s4() + s4();
-    },
     onDocClick({ id, content }) {
       if (id !== this.currentDoc.id) {
         //leave the session
@@ -93,7 +93,7 @@ export default {
     },
     updateContent(docId, content) {
       const index = this.docs.findIndex((v) => v.id === docId);
-      this.$set(this.docs, index, { id: docId, content });
+      this.$set(this.docs, index, { ...this.docs[index], content });
     },
   },
 };
@@ -235,5 +235,12 @@ body {
   max-width: 80%;
   height: 700px;
   margin-right: 10px;
+
+  .mce-edit-area {
+    min-height: 500px;
+    iframe {
+      min-height: 500px !important;
+    }
+  }
 }
 </style>
