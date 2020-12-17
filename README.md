@@ -7,8 +7,8 @@ The examples cover various Javascript frameworks and bindings for different edit
 An API key is required to run these demo. Get one [here](https://app.codox.io)
 
 ## Quill
-* [Vue](https://github.com/codoxhq/samples/tree/master/src/vue-quill-codox)
-* [React](https://github.com/codoxhq/samples/tree/master/src/react-quill-codox)
+* [Vue](https://github.com/codoxhq/samples/tree/master/vue-quill-codox)
+* [React](https://github.com/codoxhq/samples/tree/master/react-quill-codox)
 
 ## Froala
 * [Vue](https://github.com/codoxhq/samples/tree/master/vue-froala-codox)
