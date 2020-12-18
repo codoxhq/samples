@@ -14,7 +14,7 @@
     <ul class="document-list">
       <li *ngFor="let doc of docs" [ngClass]="{'active': doc.id === currentDoc.id}" class="document-link"
         (click)="onDocClick(doc)">
-        <a>{{ doc.id }}</a>
+        <a>{{ doc.name }}</a>
       </li>
     </ul>
   </div>

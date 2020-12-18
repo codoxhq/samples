@@ -8,10 +8,9 @@ declare const Codox: any;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  docId: any;
   docs = [
-    { "id": "doc1", "content": "Hello World" },
-    { "id": "doc2", "content": "One two three" },
+    { "id": "e1626875-8d25-4f98-abd8-abfdd7010d69", "name": "doc1", "content": "Hello World" },
+    { "id": "adf60008-de4a-416e-b123-89cd8f44f2ce", "name": "doc2", "content": "One two three" },
   ];
   apiKey = "58e429b0-be4a-4cd8-8c8d-9a37fb0adec0";
   username = "Chris";
@@ -20,19 +19,8 @@ export class AppComponent {
 
 
   constructor() {
-    this.docId = this.guid();
     this.currentDoc = this.docs[0]
-  }
-
-  guid() {
-    const s4 = () => {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
-    };
-    return (
-      s4() + s4() + s4() + s4() + s4() + s4() + s4() + s4()
-    );
+    this.codox = new Codox()
   }
 
   onDocClick({ id, content }) {
