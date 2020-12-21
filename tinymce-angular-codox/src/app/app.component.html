@@ -1,0 +1,26 @@
+<div class="header">
+  <a href="https://www.codox.io" class="logo-link" target="_blank">
+    <img id="logo" src="https://www.codox.io/assets/img/wave.svg" alt="">
+  </a>
+  <div class="logo-title">
+    Create your own Google Docs with Wave + Tinymce on Angular
+  </div>
+</div>
+
+
+
+<div class="main-container">
+  <div class="document-container">
+    <ul class="document-list">
+      <li *ngFor="let doc of docs" [ngClass]="{'active': doc.id === currentDoc.id}" class="document-link"
+        (click)="onDocClick(doc)">
+        <a>{{ doc.name }}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="editors">
+    <app-realtime-tinymce *ngIf="currentDoc.id" class="editor" [apiKey]="apiKey" [username]="username"
+      [docId]="currentDoc.id" [codox]="codox" [model]="currentDoc.content">
+    </app-realtime-tinymce>
+  </div>
+</div>
