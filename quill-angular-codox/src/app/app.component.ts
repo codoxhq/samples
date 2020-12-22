@@ -9,8 +9,8 @@ declare const Codox: any;
 })
 export class AppComponent {
   docs = [
-    { "id": "e1626875-8d25-4f98-abd8-abfdd7010d69", "name": "doc1", "content": "Hello World" },
-    { "id": "adf60008-de4a-416e-b123-89cd8f44f2ce", "name": "doc2", "content": "One two three" },
+    { "id": "d9c6d75e-8ce7-4cd2-9c78-a732a6b7256e", "name": "doc1", "content": "Hello World" },
+    { "id": "8cc0a067-f045-4998-a7b1-782652e01fa7", "name": "doc2", "content": "One two three" },
   ];
   apiKey = "58e429b0-be4a-4cd8-8c8d-9a37fb0adec0";
   username = "Chris";

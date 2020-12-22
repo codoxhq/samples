@@ -3,7 +3,7 @@
     <img id="logo" src="https://www.codox.io/assets/img/wave.svg" alt="">
   </a>
   <div class="logo-title">
-    Create your own Google Docs with Wave + Froala on Angular
+    Create your own Google Docs with Wave + Tinymce on Angular
   </div>
 </div>
 
@@ -19,8 +19,8 @@
     </ul>
   </div>
   <div class="editors">
-    <app-realtime-froala *ngIf="currentDoc.id" class="editor" [apiKey]="apiKey" [username]="username"
+    <app-realtime-tinymce *ngIf="currentDoc.id" class="editor" [apiKey]="apiKey" [username]="username"
       [docId]="currentDoc.id" [codox]="codox" [model]="currentDoc.content" [boundCallback]="boundCallback">
-    </app-realtime-froala>
+    </app-realtime-tinymce>
   </div>
 </div>
