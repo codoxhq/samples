@@ -16,7 +16,11 @@ export class AppComponent {
   username = "Chris";
   currentDoc: any;
   codox: any;
+  boundCallback: Function;
 
+  public ngOnInit() {
+    this.boundCallback = this.updateContent.bind(this);
+  }
 
   constructor() {
     this.currentDoc = this.docs[0]
@@ -34,5 +38,14 @@ export class AppComponent {
         content,
       };
     }
+  }
+
+  updateContent(docId, content) {
+    this.docs = this.docs.map(d => {
+      if (d.id === docId) {
+        return { ...d, content }
+      }
+      return d
+    })
   }
 }

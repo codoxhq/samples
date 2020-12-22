@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { Component, OnInit, OnDestroy, Input, OnChanges, SimpleChanges } from "@angular/core";
 
 declare const Codox: any;
 
@@ -13,17 +13,18 @@ export class RealtimeFroalaComponent implements OnInit, OnDestroy, OnChanges {
   @Input() username;
   @Input() codox;
   @Input() model;
+  @Input() boundCallback;
 
   options: any;
   editor: any;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     const self = this;
     this.options = {
       events: {
-        "initialized":  function() {
+        "initialized": function () {
           self.froalaInitialized(this);
         }
       }
@@ -44,13 +45,20 @@ export class RealtimeFroalaComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   startCollaboration() {
-    setTimeout(() =>  {
+    setTimeout(() => {
       this.codox.init({
-        app      : "froala",
-        username :  this.username,
-        docId    :  this.docId,
-        apiKey   :  this.apiKey,
-        editor   :  this.editor
+        app: "froala",
+        username: this.username,
+        docId: this.docId,
+        apiKey: this.apiKey,
+        editor: this.editor,
+        hooks: {
+          // invoked whenever the document has been updated
+          contentChanged: () => {
+            const content = this.editor.html.get();
+            this.boundCallback(this.docId, content);
+          },
+        },
       });
     }, 100);
   }

@@ -20,7 +20,7 @@
   </div>
   <div class="editors">
     <app-realtime-quill *ngIf="currentDoc.id" class="editor" [apiKey]="apiKey" [username]="username"
-      [docId]="currentDoc.id" [codox]="codox" [model]="currentDoc.content">
+      [docId]="currentDoc.id" [codox]="codox" [model]="currentDoc.content" [boundCallback]="boundCallback">
     </app-realtime-quill>
   </div>
 </div>

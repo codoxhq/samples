@@ -13,6 +13,7 @@ export class RealtimeTinymceComponent implements OnDestroy, OnChanges {
   @Input() username;
   @Input() codox;
   @Input() model;
+  @Input() boundCallback
 
   options: any;
   editor: any;
@@ -44,7 +45,14 @@ export class RealtimeTinymceComponent implements OnDestroy, OnChanges {
       username: this.username,
       docId: this.docId,
       apiKey: this.apiKey,
-      editor: this.editor
+      editor: this.editor,
+      hooks: {
+        // invoked whenever the document has been updated
+        contentChanged: () => {
+          const content = this.editor.getContent();
+          this.boundCallback(this.docId, content);
+        },
+      },
     });
   }
 }
