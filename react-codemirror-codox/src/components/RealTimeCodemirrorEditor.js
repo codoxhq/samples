@@ -50,7 +50,7 @@ const RealTimeCodemirrorEditor = ({ codox, docId, username, apiKey, model, updat
         window.codox = codox;
 
         codox.on('users_update', (data) => {console.debug('[codemirror] event on user_update', data)});
-        // codox.on('content_changed', (data) => {console.debug('[codemirror] event on content_changed', data)});
+        codox.on('content_changed', (data) => {console.debug('[codemirror] event on content_changed', data)});
         codox.init(config);
 
     }

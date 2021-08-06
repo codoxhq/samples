@@ -10,7 +10,7 @@ function App() {
   const username = 'Chris';
   const [docs, updateDocs] = useState([
     { "id": "abcde", name: "doc1", "content": "Hello World" },
-    { "id": "abcde", name: "doc2", "content": "One two three" }
+    { "id": "abcdef", name: "doc2", "content": "One two three" }
   ])
   const [activeDoc, setActiveDoc] = useState(docs[0])
   const [codox, setCodoxInstance] = useState(null)
