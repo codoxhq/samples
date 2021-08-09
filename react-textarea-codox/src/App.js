@@ -9,8 +9,8 @@ function App() {
   const apiKey = '58e429b0-be4a-4cd8-8c8d-9a37fb0adec0';
   const username = 'Chris';
   const [docs, updateDocs] = useState([
-    { "id": "8d52d64b-f7c5-40de-8137-629376ffbc76", name: "doc1", "content": "Hello World" },
-    { "id": "8d52d64b-f7c5-40de-8137-629376ffbc77", name: "doc2", "content": "One two three" }
+    { "id": "asfafa", name: "doc1", "content": "Hello World" },
+    { "id": "abcdef", name: "doc2", "content": "One two three" }
   ])
   const [activeDoc, setActiveDoc] = useState(docs[0])
   const [codox, setCodoxInstance] = useState(null)
