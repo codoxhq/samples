@@ -27,7 +27,11 @@ const RealTimeFroalaEditor = ({ codox, docId, username, apiKey, model, updateCon
             docId: docId,
             apiKey: apiKey,
             editor: editor,
+            permission: { token: 'token', url: 'http://', interval: 5000 },
             hooks: {
+                fetchDocOnNetworkReconnect: () => {
+                    return { content: 'Hello world!', timestamp: 45151513513 };
+                },
                 // invoked whenever the document has been updated
                 contentChanged: () => {
                     const content = editor.html.get();
