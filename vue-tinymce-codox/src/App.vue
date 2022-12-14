@@ -39,7 +39,7 @@
 </template>
 
 <script
-  src="https://smd.stage.codox.io/plugins/wave.client.js?apiKey=58e429b0-be4a-4cd8-8c8d-9a37fb0adec0&app=tinymce"
+  src="https://cdn1.codox.io/lib/2.x/api/wave.client.js"
   type="text/javascript"
 ></script>
 
@@ -100,7 +100,7 @@ export default {
 </script>
 
 <style lang="scss">
-/*@import 'https://cdn1.stage.codox.io/lib/css/wave.client.css';*/
+/*@import 'https://cdn1.codox.io/lib/2.x/css/wave.client.css';*/
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
