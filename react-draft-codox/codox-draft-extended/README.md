@@ -18,7 +18,7 @@ Before starting, need to configure envs for both client and server:
 
 ## Scripts
 
-### Cleint
+### Client
 
 ```bash
     cd ./client

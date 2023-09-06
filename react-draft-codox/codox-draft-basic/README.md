@@ -1,6 +1,6 @@
 # Codox + DraftJS Basic Editor
 
-Demo for draftjs basic editor with Codox sync <br/>
+Demo for Draftjs basic editor with Codox sync <br/>
 
 Stack: React(+draftjs) + Express + MongoDB
 
@@ -19,7 +19,7 @@ Before starting, need to configure envs for both client and server:
 
 ## Scripts
 
-### Cleint
+### Client
 
 ```bash
     cd ./client
