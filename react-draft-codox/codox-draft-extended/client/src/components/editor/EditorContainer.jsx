@@ -25,7 +25,7 @@ import InlineStyleControls from "./InlineStyleControls";
 import BlockStyleControls from "./BlockStyleControls";
 
 // import Codox lib
-import { withCodox } from "codox-provider";
+import { withCodox } from "@codoxhq/codox-provider";
 
 /**
  * Plugins from @draft-js-plugins

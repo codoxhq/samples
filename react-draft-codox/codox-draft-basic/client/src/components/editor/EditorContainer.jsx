@@ -5,7 +5,7 @@ import { Editor, EditorState, convertFromRaw, convertToRaw } from "draft-js";
 // import styled components
 import { EditorWrapper, Title } from "./EditorStyles";
 // import Codox lib
-import { withCodox } from "codox-provider";
+import { withCodox } from "@codoxhq/codox-provider";
 
 // decorate editor outside component to avoid re-creations during re-renders or, if place it into comp body, use useMemo to wrap only once
 // should pass convertFromRaw/convertToRaw helpers in options
