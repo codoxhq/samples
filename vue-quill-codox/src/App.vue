@@ -39,16 +39,12 @@
   </div>
 </template>
 
-<script
-  src="https://cdn1.codox.io/lib/2.x/api/wave.client.js"
-  type="text/javascript"
-></script>
-
 <script>
-import RealtimeQuill from "./components/RealtimeQuill.vue";
+import RealtimeQuill from './components/RealtimeQuill.vue';
+import Codox from '@codoxhq/quill-provider';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     RealtimeQuill,
   },
@@ -56,18 +52,18 @@ export default {
     return {
       docs: [
         {
-          id: "557be51c-ea77-4d2f-a827-119f8b55ab33",
-          name: "doc1",
-          content: "Hello World",
+          id: '557be51c-ea77-4d2f-a827-119f8b55ab33',
+          name: 'doc1',
+          content: 'Hello World',
         },
         {
-          id: "6283eeb9-180d-4d9b-8d2f-1bbb95e91dee",
-          name: "doc2",
-          content: "One two three",
+          id: '6283eeb9-180d-4d9b-8d2f-1bbb95e91dee',
+          name: 'doc2',
+          content: 'One two three',
         },
       ],
-      apiKey: "58e429b0-be4a-4cd8-8c8d-9a37fb0adec0",
-      username: "Chris",
+      apiKey: '58e429b0-be4a-4cd8-8c8d-9a37fb0adec0',
+      username: 'Chris',
       currentDoc: {},
       codox: null,
     };
@@ -104,9 +100,8 @@ export default {
 /*@import 'https://cdn1.codox.io/lib/2.x/css/wave.client.css';*/
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   font-weight: 400;
 }
 
@@ -196,7 +191,7 @@ body {
       background: #e6ecf1 !important;
     }
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       height: 1px;
       bottom: -3px;
