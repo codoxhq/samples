@@ -2,6 +2,6 @@
  * Import codox api
  */
 
-import Codox from "../../../quill-provider/src/index";
+import Codox from "@codoxhq/quill-provider";
 
 export default Codox;

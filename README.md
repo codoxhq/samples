@@ -8,20 +8,24 @@ An API key is required to run these demo. Get one [here](https://app.codox.io)
 
 ## Quill
 
-- [Vue](https://github.com/codoxhq/samples/tree/master/vue-quill-codox)
-- [React](https://github.com/codoxhq/samples/tree/master/react-quill-codox)
+- [Vue](https://github.com/codoxhq/samples/tree/v2/vue-quill-codox)
+- [React](https://github.com/codoxhq/samples/tree/v2/react-quill-codox)
 
 ## Froala
 
-- [Vue](https://github.com/codoxhq/samples/tree/master/vue-froala-codox)
-- [React](https://github.com/codoxhq/samples/tree/master/react-froala-codox)
-- [Angular](https://github.com/codoxhq/samples/tree/master/froala-angular-codox)
+- [Vue](https://github.com/codoxhq/samples/tree/v2/vue-froala-codox)
+- [React](https://github.com/codoxhq/samples/tree/v2/react-froala-codox)
+- [Angular](https://github.com/codoxhq/samples/tree/v2/froala-angular-codox)
 
 ## Tinymce
 
-- [Vue](https://github.com/codoxhq/samples/tree/master/vue-tinymce-codox)
-- [React](https://github.com/codoxhq/samples/tree/master/react-tinymce-codox)
+- [Vue](https://github.com/codoxhq/samples/tree/v2/vue-tinymce-codox)
+- [React](https://github.com/codoxhq/samples/tree/v2/react-tinymce-codox)
 
 ## DraftJS
 
-- [React](https://github.com/codoxhq/samples/tree/master/react-draft-codox)
+- [React](https://github.com/codoxhq/samples/tree/v2/react-draft-codox)
+
+## Lexcial
+
+- [React](https://github.com/codoxhq/samples/tree/v2/react-lexical-codox)

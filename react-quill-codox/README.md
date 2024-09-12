@@ -2,7 +2,7 @@
 
 Demo of reactjs + quilljs <br/>
 
-React(+quilljs) + Express + MongoDB(mongodb-memory-server)
+React(+quilljs) + Express + MongoDB
 
 ##### Configuring
 
