@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.cursors_nav {
+  display: flex;
+}
+
+.cursors_nav > button {
+  margin: 0 20px 0 20px;
+  padding: 5px;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.534);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cursors_nav > button:hover {
+  background: lightgray;
+}
+.cursors_nav > button:active {
+  background: transparent;
+}

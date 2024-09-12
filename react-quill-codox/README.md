@@ -1,28 +1,31 @@
-# Codox + React Quill
+#### React-Quilljs demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Demo of reactjs + quilljs <br/>
 
-## Available Scripts
+React(+quilljs) + Express + MongoDB(mongodb-memory-server)
 
-In the project directory, you can run:
+##### Configuring
 
-### `npm start`
+Before starting, you need to configure envs for both client and server:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+    cd ./server # navigate to server
+    touch .env # create env file, check .env.example to see which envs are used
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    cd ../client # navigate back to client
+    touch .env # create .env file, check .env.example to see which envs are used
 
+```
 
-### `npm run build`
+##### Development Mode
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run app in dev mode you can either run frontend and backend separately or use bash scripts:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+    # starting separately
+    cd ./server # navigate to server folder
+    npm run start:dev # run server in dev mode
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-
+    cd ../client # navigate back to cleint
+    npm run start # run client in dev mode
+```
