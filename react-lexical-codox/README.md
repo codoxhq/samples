@@ -1,4 +1,4 @@
 # Codox + Lexical
 
-- [Codox with basic Draft editor](https://github.com/codoxhq/samples/tree/v2/react-draft-codox/codox-draft-basic)
-- [Codox with extended Draft editor](https://github.com/codoxhq/samples/tree/v2/react-draft-codox/codox-draft-extended)
+- [Basic Codox integration with Lexical editor](https://github.com/codoxhq/samples/tree/v2/react-lexical-codox/codox-lexical-basic)
+- [Extended Codox integration with Draft editor](https://github.com/codoxhq/samples/tree/v2/react-lexical-codox/codox-lexical-extended)
