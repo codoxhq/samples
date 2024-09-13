@@ -87,7 +87,6 @@ import { INSERT_PAGE_BREAK } from '../PageBreakPlugin';
 import { InsertPollDialog } from '../PollPlugin';
 import { InsertTableDialog } from '../TablePlugin';
 import FontSize from './fontSize';
-import { CodoxFillBGColorPlugin, CodoxFontColorPlugin } from '../../codoxCollab';
 
 const blockTypeToBlockName = {
   bullet: 'Bulleted List',
@@ -808,37 +807,6 @@ export default function ToolbarPlugin({ setIsLinkEditMode }) {
           >
             <i className="format link" />
           </button>
-
-          <CodoxFontColorPlugin
-            onColorChange={(latestColor) => {
-              //Callback is invoked when font color is changed - outputs latest applied color
-              // console.log('[ToolbarPlugin]: latest font color applied: ', { latestColor });
-            }}
-            buttonLabel=""
-            buttonAriaLabel="Formatting text color"
-            // Set of css props - can customize elements with own classes
-            buttonClassName="toolbar-item color-picker"
-            buttonLabelClassName="text dropdown-button-text"
-            buttonIconClassName="icon font-color"
-            dropdownClassName="dropdown"
-            dropdownChevronClassName="chevron-down"
-          />
-
-          <CodoxFillBGColorPlugin
-            onColorChange={(latestColor) => {
-              //  Callback is invoked when font color is changed - outputs latest applied color
-              // console.log('[ToolbarPlugin]: latest bg fill color applied: ', { latestColor });
-            }}
-            buttonLabel=""
-            buttonAriaLabel="Formatting background color"
-            //Set of css props - can customize elements with own classes
-            buttonClassName="toolbar-item color-picker"
-            buttonLabelClassName="text
-          dropdown-button-text"
-            buttonIconClassName="icon bg-color"
-            dropdownClassName="dropdown"
-            dropdownChevronClassName="chevron-down"
-          />
 
           <DropDown
             disabled={!isEditable}

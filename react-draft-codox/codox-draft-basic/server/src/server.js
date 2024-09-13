@@ -4,6 +4,8 @@ const morgan = require("morgan");
 const mainController = require("./controllers/main.controller");
 const { errorsMiddleware } = require("./middleware/errors.middleware");
 
+// TODO: add body validations
+
 // server builder
 class ServerBuilder {
   constructor(MongoConnector) {
@@ -19,6 +21,7 @@ class ServerBuilder {
   }
 
   configure() {
+    // TODO: add other middlewares and error handling middleware here
     this.server
       .use(cors())
       .use(morgan("combined"))

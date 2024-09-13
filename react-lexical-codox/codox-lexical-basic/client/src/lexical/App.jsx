@@ -68,7 +68,7 @@ import Placeholder from './ui/Placeholder';
 
 import { fetchAllDocIds, fetchDocInitStateByDocId, fetchStateWithTimestamp, updateServerState } from './http';
 
-import { CodoxCollabPlugin, registerNodesWithCodox, CodoxCommentPlugin, validateStateStructure } from './codoxCollab';
+import { CodoxCollabPlugin, registerNodesWithCodox, validateStateStructure } from './codoxCollab';
 
 import useModal from './hooks/useModal';
 
@@ -402,9 +402,6 @@ export default function App() {
                   ref={codoxProviderRef}
                   onBlacklistedInsert={onBlacklistedInsert} // callback to trigger when attempt to insert/paste blacklisted content combination
                 />
-
-                <CodoxCommentPlugin />
-                {/*<CodoxExternalTestPlugin />*/}
 
                 {modal}
               </div>

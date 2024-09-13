@@ -1,9 +1,23 @@
+const path = require("path");
 const mongoose = require("mongoose");
+const { MongoMemoryServer } = require("mongodb-memory-server");
 const { createDemoData } = require("./createDemoData");
 
-// mongodb connect with mongoose
+// mongodb connect with mongoose to local memory database
 class MongoConnector {
   async connect() {
+    /**
+     * DISABLED mongo memory db
+     * const connection = new MongoMemoryServer({
+      instance: {
+        port: parseInt(process.env.MONGODB_PORT) || 27018,
+        dbName: process.env.MONGODB_NAME || "demoDB",
+        // custom path to db files can be specified. Note, that folder should exist
+        // dbPath: path.resolve(__dirname, "..", "..", "test_mongo_database"),
+      },
+    });
+    const mongoUri = await connection.getUri();
+     */
     const mongoUri = process.env.MONGO_URI;
 
     mongoose.connect(mongoUri, {

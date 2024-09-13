@@ -10,6 +10,7 @@ const MONGO_COLLECTION_NAMES = {
 const DocumentSchema = new Schema(
   {
     state: { type: Schema.Types.Mixed, default: null },
+    // selection: { type: Schema.Types.Mixed, default: {} },
   },
   { minimize: false }
 );

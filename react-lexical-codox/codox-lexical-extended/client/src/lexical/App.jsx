@@ -404,7 +404,6 @@ export default function App() {
                 />
 
                 <CodoxCommentPlugin />
-                {/*<CodoxExternalTestPlugin />*/}
 
                 {modal}
               </div>

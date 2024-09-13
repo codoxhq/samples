@@ -3,11 +3,9 @@ import ReactDOM from "react-dom";
 import Helmet from "react-helmet";
 import App from "./components/App";
 
-// styles
+// styles - add more global styles here
 import "./index.css";
-// draft styles
 import "draft-js/dist/Draft.css";
-// plugins styles
 import "@draft-js-plugins/linkify/lib/plugin.css";
 import "@draft-js-plugins/image/lib/plugin.css";
 import "@draft-js-plugins/mention/lib/plugin.css";

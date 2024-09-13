@@ -12,104 +12,107 @@ const createDemoData = async () => {
       const docs = await DocumentModel.find({});
       if (docs.length) return; // populate only when empty
 
-      await DocumentModel.create({
-        state: {
-          blocks: [
-            {
-              key: "cn93p",
-              text: "DOC 1 DEMO TEXT",
-              type: "unstyled",
-              depth: 0,
-              inlineStyleRanges: [],
-              entityRanges: [],
-              data: {},
-            },
-            {
-              key: "cn94p",
-              text: "http://test.com",
-              type: "unstyled",
-              depth: 0,
-              inlineStyleRanges: [],
-              entityRanges: [],
-              data: {},
-            },
-            {
-              key: "cn95p",
-              text: "second line of text in demo document",
-              type: "unstyled",
-              depth: 0,
-              inlineStyleRanges: [],
-              entityRanges: [],
-              data: {},
-            },
-            {
-              key: "cn96p",
-              text: "third line of text in demo document",
-              type: "unstyled",
-              depth: 0,
-              inlineStyleRanges: [],
-              entityRanges: [],
-              data: {},
-            },
-            {
-              key: "cn97p",
-              text: " ",
-              type: "atomic",
-              depth: 0,
-              inlineStyleRanges: [],
-              entityRanges: [
-                {
-                  offset: 0,
-                  length: 1,
-                  key: 0,
-                },
-              ],
-              data: {},
-            },
-            {
-              key: "cn98p",
-              text: " ",
-              type: "atomic",
-              depth: 0,
-              inlineStyleRanges: [],
-              entityRanges: [
-                {
-                  offset: 0,
-                  length: 1,
-                  key: 1,
-                },
-              ],
-              data: {},
-            },
-            {
-              key: "cn99p",
-              text: "last line of text in demo document",
-              type: "unstyled",
-              depth: 0,
-              inlineStyleRanges: [],
-              entityRanges: [],
-              data: {},
-            },
-          ],
-          entityMap: {
-            0: {
-              type: "IMAGE",
-              mutability: "IMMUTABLE",
-              data: {
-                src: "https://picsum.photos/id/237/200/100",
+      const texts = ["DOC 1 DEMO TEXT", "DOC 2 DEMO TEXT", "DOC 3 DEMO TEXT"];
+      for await (const text of texts) {
+        await DocumentModel.create({
+          state: {
+            blocks: [
+              {
+                key: "cn93p",
+                text,
+                type: "unstyled",
+                depth: 0,
+                inlineStyleRanges: [],
+                entityRanges: [],
+                data: {},
               },
-            },
-            1: {
-              type: "draft-js-video-plugin-video", //  compatible with video plugin types https://www.draft-js-plugins.com/plugin/video
+              {
+                key: "cn94p",
+                text: "http://test.com",
+                type: "unstyled",
+                depth: 0,
+                inlineStyleRanges: [],
+                entityRanges: [],
+                data: {},
+              },
+              {
+                key: "cn95p",
+                text: "second line of text in demo document",
+                type: "unstyled",
+                depth: 0,
+                inlineStyleRanges: [],
+                entityRanges: [],
+                data: {},
+              },
+              {
+                key: "cn96p",
+                text: "third line of text in demo document",
+                type: "unstyled",
+                depth: 0,
+                inlineStyleRanges: [],
+                entityRanges: [],
+                data: {},
+              },
+              {
+                key: "cn97p",
+                text: " ",
+                type: "atomic",
+                depth: 0,
+                inlineStyleRanges: [],
+                entityRanges: [
+                  {
+                    offset: 0,
+                    length: 1,
+                    key: 0,
+                  },
+                ],
+                data: {},
+              },
+              {
+                key: "cn98p",
+                text: " ",
+                type: "atomic",
+                depth: 0,
+                inlineStyleRanges: [],
+                entityRanges: [
+                  {
+                    offset: 0,
+                    length: 1,
+                    key: 1,
+                  },
+                ],
+                data: {},
+              },
+              {
+                key: "cn99p",
+                text: "last line of text in demo document",
+                type: "unstyled",
+                depth: 0,
+                inlineStyleRanges: [],
+                entityRanges: [],
+                data: {},
+              },
+            ],
+            entityMap: {
+              0: {
+                type: "IMAGE",
+                mutability: "IMMUTABLE",
+                data: {
+                  src: "https://picsum.photos/id/237/200/100",
+                },
+              },
+              1: {
+                type: "draft-js-video-plugin-video", //  compatible with video plugin types https://www.draft-js-plugins.com/plugin/video
 
-              mutability: "IMMUTABLE",
-              data: {
-                src: "https://www.youtube.com/watch?v=iEPTlhBmwRg",
+                mutability: "IMMUTABLE",
+                data: {
+                  src: "https://www.youtube.com/watch?v=iEPTlhBmwRg",
+                },
               },
             },
           },
-        },
-      });
+        });
+      }
     });
 
     session.endSession();
