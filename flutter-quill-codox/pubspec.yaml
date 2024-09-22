@@ -1,0 +1,24 @@
+name: codox_quill
+description: 'Flutter+QuillJS+Codox'
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_inappwebview: ^5.7.2+4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  # List the assets for flutter
+  assets:
+    - assets/quill.html
+    - assets/codox.js

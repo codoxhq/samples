@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Codox+QuillJS Integration</title>
+
+    <!-- Include quill stylesheet -->
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet" />
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+
+    <!-- NOTE: codox.js is injected in webview after page is loaded -->
+    <!-- Import codox lib core from local file  -->
+    <!-- <script src="codox.js"></script> -->
+  </head>
+  <body>
+    <!-- Create the editor container -->
+    <div id="editor"></div>
+
+    <!-- Initialize Quill editor with Codox sync-->
+    <script>
+      //  create editor toolbar options
+      var toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block', 'image', 'clean'],
+        [{ header: 1 }, { header: 2 }],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['link'],
+        [{ script: 'sub' }, { script: 'super' }],
+        [{ intent: '-1' }, { intent: '+1' }],
+        [{ direction: 'rtl' }],
+        [{ size: ['small', false, 'large', 'huge'] }],
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        [{ color: [] }, { background: [] }],
+        [{ font: [] }],
+        [{ align: [] }],
+      ];
+
+      var codox = null; // codox instance will be assigned
+
+      // create Quill Editor instance
+      var quill = new Quill('#editor', {
+        modules: {
+          toolbar: toolbarOptions,
+        },
+        theme: 'snow',
+        placeholder: 'Enter some text...',
+      });
+
+      async function fetchDocOnNetworkReconnectHook() {
+        console.log('[CODOX][fetchDocOnNetworkReconnect] hook invoked');
+        return await new Promise((resolve, reject) => {
+          /**
+           * Set up a temp response handler for response from swift
+           * This callback will be invoked by swift with fetched state
+           * Wiat here until callback is invoked
+           *
+           * Reason to have this: postMessage() interface does not wiat for response.
+           *  on swift side, when it is ready to return data, the temp callback will be invoked.
+           *  Here, all this si wrapped in promise to keep it within single async call
+           * */
+          window.fetchDocOnReconnectHookResponse = (data) => {
+            const { content, timestamp } = JSON.parse(data);
+            resolve({ content, timestamp });
+            delete window.fetchDocOnReconnectHookResponse;
+          };
+
+          // trigger swift to fetch state
+          window.webkit.messageHandlers.fetchDocOnNetworkReconnect.postMessage();
+        });
+      }
+
+      function usersUpdateHook(data) {
+        const json = JSON.stringify(data);
+        console.log('[CODOX][usersUpdate]: ' + json);
+        // send data to swift
+        window.webkit.messageHandlers.usersUpdate.postMessage(json);
+      }
+
+      function contentChangedHook(data) {
+        const json = JSON.stringify(data);
+        console.log('[CODOX][contentChanged]: ', json);
+        // send data to swift
+        window.webkit.messageHandlers.contentChanged.postMessage(json);
+      }
+
+      function onCodoxError(data) {
+        let json = JSON.stringify(data);
+        console.log('[CODOX][Error Event]: ', json);
+        // send data to swift
+        window.webkit.messageHandlers.onCodoxError.postMessage(json);
+      }
+
+      function startCodox() {
+        // create new instance
+        codox = new Codox();
+
+        // subscribe to codox error events
+        codox.on('error', onCodoxError);
+
+        // demo username - random number generation
+        let username = `user_${Math.round(Math.random() * 1000)}`;
+        // create codox config
+        const codoxConfig = {
+          app: 'quilljs',
+          editor: quill,
+          docId: 'swift_quill_docId_1', //this is the unique id used to distinguish different documents
+          username, //unique user name
+          apiKey: '8b1e21f3-6534-4877-9090-dbb9e61993eb', // this apiKey is for demo only, should use own codox apiKey
+          demo: true,
+          hooks: {
+            fetchDocOnNetworkReconnect: fetchDocOnNetworkReconnectHook,
+            usersUpdate: usersUpdateHook,
+            contentChanged: contentChangedHook,
+          },
+        };
+        // async start codox
+        codox
+          .start(codoxConfig)
+          .then(() => {
+            console.log('Codox successfully started');
+          })
+          .catch((err) => {
+            console.error('Codox start error: ', err);
+          });
+      }
+
+      function stopCodox() {
+        console.log('stopping codox');
+        codox && codox.stop();
+        codox = null;
+      }
+
+      // callback to set initial state for editor
+      function setQuillInitState(initQuillState) {
+        console.log('[setQuillInitState] invoked: ' + JSON.stringify(initQuillState));
+        // Set initial content to Quill first
+        quill.setContents(initQuillState, 'silent');
+      }
+
+      // callback to get full state
+      function getQuillEditorState() {
+        const fullDeltas = quill.getContents();
+        const json = JSON.stringify(fullDeltas);
+        console.log('[getQuillEditorState] latest full state: ' + json);
+        return json;
+      }
+    </script>
+  </body>
+</html>

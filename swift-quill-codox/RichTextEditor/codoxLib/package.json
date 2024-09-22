@@ -1,0 +1,12 @@
+{
+  "name": "codoxlib",
+  "version": "0.0.0",
+  "main": "",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@codoxhq/quill-provider": "^1.0.1"
+  }
+}
