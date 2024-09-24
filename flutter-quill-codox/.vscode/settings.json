@@ -1,6 +1,0 @@
-{
-  "java.compile.nullAnalysis.mode": "automatic",
-  "dart.devToolsBrowser": "chrome",
-  "dart.embedDevTools": false,
-  "java.configuration.updateBuildConfiguration": "automatic"
-}
