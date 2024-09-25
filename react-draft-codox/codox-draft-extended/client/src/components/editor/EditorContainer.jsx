@@ -67,7 +67,7 @@ const EditorContainer = ({ docId, username }) => {
   const fetchDocOnNetworkReconnect = async () => {
     const { state, timestamp = Date.now() } = await httpService.getFirstDocument();
     // response must match the following schema:
-    return { state, timestamp };
+    return { content: state, timestamp };
   };
 
   const contentChangedHookCB = (data) => {

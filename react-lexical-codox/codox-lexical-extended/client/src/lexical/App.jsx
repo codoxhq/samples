@@ -129,7 +129,7 @@ export default function App() {
 
   const fetchDocOnNetworkReconnect = async () => {
     const state = await fetchDocInitStateByDocId(currentDocId);
-    return { state, timestamp: Date.now() };
+    return { content: state, timestamp: Date.now() };
   };
 
   // triggered by Codox
